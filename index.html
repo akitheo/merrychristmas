@@ -21,12 +21,14 @@
             border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.2);
             cursor: pointer;
+            position: relative; /* Required for absolute positioning of balloons */
         }
 
         img {
             max-width: 100%;
             height: auto;
             margin: 10px 0;
+            position: absolute; /* Position the balloons absolutely within the .invitation div */
         }
 
         .form-link {
@@ -55,14 +57,12 @@
         <p><strong>Dress Code:</strong> Green/Red</p>
         <p>Let's come together to make this Christmas season bright!</p>
 
-        <img src="Images/ballon.jpg" alt="ballon">
-        
+        <!-- Two movable balloons -->
+        <img id="balloon1" src="Images/ballon.jpg" alt="balloon" style="top: 50px; left: 100px;">
+        <img id="balloon2" src="Images/ballon1.jpg" alt="balloon1" style="top: 150px; left: 200px;">
+
         <img src="Images/crishttree.jpg" alt="tree">
-        
-        <img src="Images/ballon1.jpg" alt="ballon1">
-        
         <img src="Images/cute-happy-santa-claus-waving-cartoon-illustration-father-christmas-kris-kringle-saint-nick-winter-christmas-theme-clip-art-vector.jpg" alt="santa">
-      
 
         <!-- Link to the Google Form with music trigger -->
         <div class="form-link">
@@ -85,6 +85,18 @@
             var audio = document.getElementById('backgroundAudio');
             audio.muted = false;
             audio.play();
+        }
+
+        // Make balloons movable
+        document.addEventListener('mousemove', function (event) {
+            moveBalloon(event, 'balloon1');
+            moveBalloon(event, 'balloon2');
+        });
+
+        function moveBalloon(event, balloonId) {
+            var balloon = document.getElementById(balloonId);
+            balloon.style.left = (event.clientX + window.scrollX) + 'px';
+            balloon.style.top = (event.clientY + window.scrollY) + 'px';
         }
     </script>
 </body>
