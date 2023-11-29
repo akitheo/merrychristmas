@@ -32,18 +32,19 @@
         }
 
         /* Shaking animation for balloons */
-        @keyframes shake {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(-5px, 5px); }
-            50% { transform: translate(5px, -5px); }
-            75% { transform: translate(-5px, 5px); }
-            100% { transform: translate(0, 0); }
-        }
-
+    
         .shaking-balloon {
-            position: absolute;
-            animation: shake 0.5s infinite;
-        }
+        position: absolute;
+        top: 50px;
+        left: 100px;
+        animation: shake 0.5s infinite;
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translate(0, 0); }
+        25%, 75% { transform: translate(-5px, 5px); }
+        50% { transform: translate(5px, -5px); }
+    }
 
         .form-link {
             margin-top: 20px;
