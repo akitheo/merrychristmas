@@ -39,7 +39,7 @@ If you'd like to contribute to this project:
 ## Credits
 
 - Images: 
-- Background Music: [Free Music Archive](https://freemusicarchive.org)
+- Background Music: 
 
 ## License
 
