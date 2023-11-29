@@ -29,6 +29,16 @@
             height: auto;
             margin: 10px 0;
             position: absolute; /* Position the balloons absolutely within the .invitation div */
+            animation: shake 0.5s infinite; /* Add shake animation */
+        }
+
+        /* Define the shake animation */
+        @keyframes shake {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-5px, 5px); }
+            50% { transform: translate(5px, -5px); }
+            75% { transform: translate(-5px, 5px); }
+            100% { transform: translate(0, 0); }
         }
 
         .form-link {
@@ -57,9 +67,9 @@
         <p><strong>Dress Code:</strong> Green/Red</p>
         <p>Let's come together to make this Christmas season bright!</p>
 
-        <!-- Two movable balloons -->
-        <img id="balloon1" src="Images/ballon.jpg" alt="balloon" style="top: 50px; left: 100px;">
-        <img id="balloon2" src="Images/ballon1.jpg" alt="balloon1" style="top: 150px; left: 200px;">
+        <!-- Two shaking balloons -->
+        <img src="Images/ballon.jpg" alt="balloon" style="top: 50px; left: 100px;">
+        <img src="Images/ballon1.jpg" alt="balloon1" style="top: 150px; left: 200px;">
 
         <img src="Images/crishttree.jpg" alt="tree">
         <img src="Images/cute-happy-santa-claus-waving-cartoon-illustration-father-christmas-kris-kringle-saint-nick-winter-christmas-theme-clip-art-vector.jpg" alt="santa">
@@ -85,18 +95,6 @@
             var audio = document.getElementById('backgroundAudio');
             audio.muted = false;
             audio.play();
-        }
-
-        // Make balloons movable
-        document.addEventListener('mousemove', function (event) {
-            moveBalloon(event, 'balloon1');
-            moveBalloon(event, 'balloon2');
-        });
-
-        function moveBalloon(event, balloonId) {
-            var balloon = document.getElementById(balloonId);
-            balloon.style.left = (event.clientX + window.scrollX) + 'px';
-            balloon.style.top = (event.clientY + window.scrollY) + 'px';
         }
     </script>
 </body>
