@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,31 +28,17 @@
             margin: 10px 0;
         }
 
-        .form-container {
-            text-align: left;
+        .form-link {
             margin-top: 20px;
         }
 
-        .form-container label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-container input,
-        .form-container select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        .form-container button {
+        .form-link a {
+            display: inline-block;
             background-color: red;
             color: white;
             padding: 10px;
-            border: none;
+            text-decoration: none;
             border-radius: 5px;
-            cursor: pointer;
         }
     </style>
 </head>
@@ -70,42 +55,14 @@
 
         <p>Let's come together to make this Christmas season bright!</p>
 
-        <img src="Images/crishttree.jpg" alt="tree">
-        <img src="Images/cute-happy-santa-claus-waving-cartoon-illustration-father-christmas-kris-kringle-saint-nick-winter-christmas-theme-clip-art-vector.jpg" alt="santa">
+        <img src="C:\Users\akash.pal\Downloads\crishttree.jpg" alt="santa">
+        <img src="C:\Users\akash.pal\Downloads\cute-happy-santa-claus-waving-cartoon-illustration-father-christmas-kris-kringle-saint-nick-winter-christmas-theme-clip-art-vector.jpg" alt="tree">
 
-        <!-- Form to collect user information -->
-        <div class="form-container">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" placeholder="Enter your name">
-
-            <label for="foodPreference">Food Preference:</label>
-            <select id="foodPreference">
-                <option value="veg">Vegetarian</option>
-                <option value="nonveg">Non-Vegetarian</option>
-            </select>
-
-            <label>Will Attend:</label>
-            <label><input type="radio" name="attendance" value="yes"> Yes</label>
-            <label><input type="radio" name="attendance" value="no"> No</label>
-
-            <button onclick="submitForm()">Submit</button>
+        <!-- Button to the Google Form -->
+        <div class="form-link">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSci0E22Em25CLzHTNHDyd1buGIHSKjgocDv0-DgccP6cf5HoA/viewform?usp=sf_link" target="_blank">Fill out your details</a>
         </div>
     </div>
-
-    <script>
-        function submitForm() {
-            // Get the user's information from the input fields
-            var userName = document.getElementById("name").value;
-            var foodPreference = document.getElementById("foodPreference").value;
-            var attendance = document.querySelector('input[name="attendance"]:checked');
-
-            // Check if attendance is selected
-            var willAttend = attendance ? attendance.value : "Not specified";
-
-            // You can do something with the collected information, e.g., display a message
-            alert("Thank you, " + userName + "! Your food preference is " + foodPreference + " and you " + willAttend + " attend the party.");
-        }
-    </script>
 </body>
 
 </html>
