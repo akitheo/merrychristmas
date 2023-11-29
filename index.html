@@ -9,7 +9,7 @@
         body {
             background-color: black;
             color: red;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Times New Roman', serif; /* Changed font to Times New Roman */
             text-align: center;
             padding: 20px;
         }
@@ -72,6 +72,19 @@
     </audio>
 
     <script>
+        // Function to start audio when user scrolls
+        function startAudioOnScroll() {
+            var audio = document.getElementById('backgroundAudio');
+            audio.muted = false;
+            audio.play();
+            // Remove the event listener to prevent multiple plays
+            window.removeEventListener('scroll', startAudioOnScroll);
+        }
+
+        // Add event listener to start audio when user scrolls
+        window.addEventListener('scroll', startAudioOnScroll);
+
+        // Function to start audio on user interaction (click)
         function startAudio() {
             var audio = document.getElementById('backgroundAudio');
             audio.muted = false;
