@@ -64,28 +64,11 @@
         </div>
     </div>
 
-<!-- Background music (autoplay, loop, and initially muted) -->
-    <audio id="backgroundAudio" autoplay loop muted>
+    <!-- Background music (autoplay, loop, and initially muted) -->
+    <audio autoplay loop muted>
         <source src="https://raw.githubusercontent.com/akitheo/merrychristmas/main/path/to/Music/we-wish-you-a-merry-christmas-xmas-background-short-music-30-second-178228.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-
-    <script>
-        // Simulate a click on the startAudioButton after the page loads
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('startAudioButton').click();
-        });
-
-        function startAudio() {
-            // Unmute the audio and play it
-            var audio = document.getElementById('backgroundAudio');
-            audio.muted = false;
-            audio.play();
-        }
-    </script>
-
-
-    
 </body>
 
 </html>
