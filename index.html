@@ -12,6 +12,7 @@
             font-family: 'Times New Roman', serif;
             text-align: center;
             padding: 20px;
+            overflow: hidden; /* Hide overflow to prevent horizontal scrollbar */
         }
 
         .invitation {
@@ -21,24 +22,27 @@
             border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.2);
             cursor: pointer;
-            position: relative; /* Required for absolute positioning of balloons */
+            position: relative;
         }
 
         img {
             max-width: 100%;
             height: auto;
             margin: 10px 0;
-            position: absolute; /* Position the balloons absolutely within the .invitation div */
-            animation: shake 0.5s infinite; /* Add shake animation */
         }
 
-        /* Define the shake animation */
+        /* Shaking animation for balloons */
         @keyframes shake {
             0% { transform: translate(0, 0); }
             25% { transform: translate(-5px, 5px); }
             50% { transform: translate(5px, -5px); }
             75% { transform: translate(-5px, 5px); }
             100% { transform: translate(0, 0); }
+        }
+
+        .shaking-balloon {
+            position: absolute;
+            animation: shake 0.5s infinite;
         }
 
         .form-link {
@@ -67,12 +71,12 @@
         <p><strong>Dress Code:</strong> Green/Red</p>
         <p>Let's come together to make this Christmas season bright!</p>
 
-        <!-- Two shaking balloons -->
-        <img src="Images/ballon.jpg" alt="balloon" style="top: 50px; left: 100px;">
-        <img src="Images/ballon1.jpg" alt="balloon1" style="top: 150px; left: 200px;">
-
+        <!-- Santa and Tree images -->
         <img src="Images/crishttree.jpg" alt="tree">
         <img src="Images/cute-happy-santa-claus-waving-cartoon-illustration-father-christmas-kris-kringle-saint-nick-winter-christmas-theme-clip-art-vector.jpg" alt="santa">
+
+        <!-- Shaking Balloon -->
+        <img src="Images/ballon.jpg" alt="balloon" class="shaking-balloon" style="top: 50px; left: 100px;">
 
         <!-- Link to the Google Form with music trigger -->
         <div class="form-link">
