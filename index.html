@@ -63,6 +63,29 @@
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSci0E22Em25CLzHTNHDyd1buGIHSKjgocDv0-DgccP6cf5HoA/viewform?usp=sf_link" target="_blank">Fill out your details</a>
         </div>
     </div>
+
+<!-- Background music (autoplay, loop, and initially muted) -->
+    <audio id="backgroundAudio" autoplay loop muted>
+        <source src="Music/we-wish-you-a-merry-christmas-xmas-background-short-music-30-second-178228.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Simulate a click on the startAudioButton after the page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('startAudioButton').click();
+        });
+
+        function startAudio() {
+            // Unmute the audio and play it
+            var audio = document.getElementById('backgroundAudio');
+            audio.muted = false;
+            audio.play();
+        }
+    </script>
+
+
+    
 </body>
 
 </html>
