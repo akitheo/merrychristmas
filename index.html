@@ -59,9 +59,13 @@
         <img src="Images/cute-happy-santa-claus-waving-cartoon-illustration-father-christmas-kris-kringle-saint-nick-winter-christmas-theme-clip-art-vector.jpg" alt="santa">
         <img src="Images/crishttree.jpg" alt="tree">
 
-        <!-- Button to the Google Form -->
+        <!-- Button to the Google Form with music trigger -->
         <div class="form-link">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSci0E22Em25CLzHTNHDyd1buGIHSKjgocDv0-DgccP6cf5HoA/viewform?usp=sf_link" target="_blank">Fill out your details</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSci0E22Em25CLzHTNHDyd1buGIHSKjgocDv0-DgccP6cf5HoA/viewform?usp=sf_link" 
+               target="_blank"
+               onclick="startAudio()">
+               Fill out your details
+            </a>
         </div>
     </div>
 
@@ -72,18 +76,6 @@
     </audio>
 
     <script>
-        // Function to start audio when user scrolls
-        function startAudioOnScroll() {
-            var audio = document.getElementById('backgroundAudio');
-            audio.muted = false;
-            audio.play();
-            // Remove the event listener to prevent multiple plays
-            window.removeEventListener('scroll', startAudioOnScroll);
-        }
-
-        // Add event listener to start audio when user scrolls
-        window.addEventListener('scroll', startAudioOnScroll);
-
         // Function to start audio on user interaction (click)
         function startAudio() {
             var audio = document.getElementById('backgroundAudio');
