@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Your Lovely Photos</title>
+    <title>Download Photos</title>
     <style>
         body {
             background-color: Pink;
@@ -13,8 +13,8 @@
             text-align: center;
             padding: 20px;
             display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
         }
 
         .category-buttons {
@@ -33,10 +33,9 @@
         }
 
         .category {
-            margin-bottom: 20px;
+            margin-top: 20px;
             display: none; /* Hide all categories by default */
-            flex-grow: 1;
-            margin-left: 20px;
+            width: 100%;
         }
 
         .category h2 {
@@ -65,7 +64,7 @@
 </head>
 
 <body>
-    <h1>Download Photos</h1>
+    <h1>Download Your Lovely Photos</h1>
 
     <!-- Category buttons on the left -->
     <div class="category-buttons">
@@ -186,4 +185,5 @@
 </body>
 
 </html>
+
 
