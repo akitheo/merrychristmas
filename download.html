@@ -73,30 +73,15 @@
 
     <!-- Load photos from GitHub and create photo elements -->
     <script>
-        // Function to fetch photos from a GitHub repository using authentication
+        // Function to fetch photos from a GitHub repository
         async function fetchGitHubPhotos(username, repository, path) {
-            try {
-                const token = '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'; // Replace with your GitHub token
-                const response = await fetch(`https://api.github.com/repos/${username}/${repository}/contents/${path}`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
+            const response = await fetch(`https://api.github.com/repos/${username}/${repository}/contents/${path}`);
+            const data = await response.json();
 
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch photos: ${response.statusText}`);
-                }
-
-                const data = await response.json();
-
-                return data.map(item => ({
-                    name: item.name,
-                    path: item.download_url,
-                }));
-            } catch (error) {
-                console.error('Error fetching GitHub photos:', error.message);
-                throw error; // Rethrow the error to propagate it
-            }
+            return data.map(item => ({
+                name: item.name,
+                path: item.download_url
+            }));
         }
 
         // Function to create photo elements
@@ -130,8 +115,19 @@
         // Fetch and create Christmas photos
         fetchGitHubPhotos('akitheo', 'merrychristmas', 'Christmass_Photos')
             .then(photos => createPhotoElements(photos, 'christmas-photos-container'))
-            .catch(error => console.error('Error fetching GitHub photos:', error.message));
+            .catch(error => console.error('Error fetching GitHub photos:', error));
+
+        // Fetch and create New Year photos
+        //fetchGitHubPhotos('akitheo', 'merrychristmas', 'New_Year_Photos')
+            //.then(photos => createPhotoElements(photos, 'new-year-photos-container'))
+            //.catch(error => console.error('Error fetching GitHub photos:', error));
+
+        // Fetch and create Nightout photos
+        //fetchGitHubPhotos('akitheo', 'merrychristmas', 'Nightout_Photos')
+            //.then(photos => createPhotoElements(photos, 'nightout-photos-container'))
+            //.catch(error => console.error('Error fetching GitHub photos:', error));
     </script>
 </body>
 
 </html>
+
