@@ -88,6 +88,11 @@
         function createPhotoElements(photos, containerId) {
             const container = document.getElementById(containerId);
 
+            if (!container) {
+                console.error('Container not found:', containerId);
+                return;
+            }
+
             photos.forEach(photo => {
                 const photoItem = document.createElement('div');
                 photoItem.className = 'photo-item';
@@ -109,7 +114,12 @@
             });
 
             // Show the category after loading photos
-            document.getElementById(containerId.replace('-photos-container', '')).style.display = 'block';
+            const categoryElement = document.getElementById(containerId.replace('-photos-container', ''));
+            if (categoryElement) {
+                categoryElement.style.display = 'block';
+            } else {
+                console.error('Category element not found:', containerId.replace('-photos-container', ''));
+            }
         }
 
         // Fetch and create Christmas photos
@@ -130,4 +140,3 @@
 </body>
 
 </html>
-
