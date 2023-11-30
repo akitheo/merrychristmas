@@ -76,7 +76,7 @@
         // Function to fetch photos from a GitHub repository using authentication
         async function fetchGitHubPhotos(username, repository, path) {
             try {
-                const token = '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'; // Replace with your GitHub token
+                const token = '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'; // Replace with your GitHub token
                 const response = await fetch(`https://api.github.com/repos/${username}/${repository}/contents/${path}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
