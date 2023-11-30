@@ -16,16 +16,16 @@
 
         .category {
             margin-bottom: 20px;
+            display: none; /* Hide all categories by default */
         }
 
         .category h2 {
             border-bottom: 2px solid white;
             padding-bottom: 5px;
-            cursor: pointer;
         }
 
         .photo-container {
-            display: none;
+            display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -48,38 +48,86 @@
     <h1>Download Photos</h1>
 
     <!-- Christmas category -->
-    <div class="category" onclick="togglePhotos('christmas-photos')">
+    <div class="category" id="christmas-category">
         <h2>Christmas</h2>
-        <div class="photo-container" id="christmas-photos">
+        <div class="photo-container">
             <!-- Display photos along with download links for Christmas category -->
             <div class="photo-item">
-                <img src="Christmas/Dinner.jpg" alt="Dinner" width="200">
-                <a href="Christmas/Dinner.jpg" class="photo-link" download>Dinner</a>
+                <img src="Christmass_Photos/Dinner.jpg" alt="Dinner" width="200">
+                <a href="Christmass_Photos/Dinner.jpg" class="photo-link" download>Dinner</a>
             </div>
 
             <div class="photo-item">
-                <img src="Christmas/Lunch.jpg" alt="Lunch" width="200">
-                <a href="Christmas/Lunch.jpg" class="photo-link" download>Lunch</a>
+                <img src="Christmass_Photos/Lunch.jpg" alt="Lunch" width="200">
+                <a href="Christmass_Photos/Lunch.jpg" class="photo-link" download>Lunch</a>
             </div>
 
             <div class="photo-item">
-                <img src="Christmas/nightout.jpg" alt="nightout" width="200">
-                <a href="Christmas/nightout.jpg" class="photo-link" download>nightout</a>
+                <img src="Christmass_Photos/nightout.jpg" alt="nightout" width="200">
+                <a href="Christmass_Photos/nightout.jpg" class="photo-link" download>nightout</a>
             </div>
             <!-- Add more photo items for each photo in the Christmas category -->
         </div>
     </div>
 
-    <!-- New Category -->
+    <!-- New Year category -->
+    <div class="category" id="new-year-category">
+        <h2>New Year</h2>
+        <div class="photo-container">
+            <!-- Display photos along with download links for New Year category -->
+            <div class="photo-item">
+                <img src="New_Year_Photos/Fireworks.jpg" alt="Fireworks" width="200">
+                <a href="New_Year_Photos/Fireworks.jpg" class="photo-link" download>Fireworks</a>
+            </div>
+
+            <div class="photo-item">
+                <img src="New_Year_Photos/Party.jpg" alt="Party" width="200">
+                <a href="New_Year_Photos/Party.jpg" class="photo-link" download>Party</a>
+            </div>
+
+            <!-- Add more photo items for each photo in the New Year category -->
+        </div>
+    </div>
+
+    <!-- Nightout category -->
+    <div class="category" id="nightout-category">
+        <h2>Nightout</h2>
+        <div class="photo-container">
+            <!-- Display photos along with download links for Nightout category -->
+            <div class="photo-item">
+                <img src="Nightout_Photos/Bar.jpg" alt="Bar" width="200">
+                <a href="Nightout_Photos/Bar.jpg" class="photo-link" download>Bar</a>
+            </div>
+
+            <div class="photo-item">
+                <img src="Nightout_Photos/Concert.jpg" alt="Concert" width="200">
+                <a href="Nightout_Photos/Concert.jpg" class="photo-link" download>Concert</a>
+            </div>
+
+            <!-- Add more photo items for each photo in the Nightout category -->
+        </div>
+    </div>
+
     <!-- Add more categories as needed -->
 
+    <!-- Buttons to switch between categories -->
+    <button onclick="showCategory('christmas-category')">Christmas</button>
+    <button onclick="showCategory('new-year-category')">New Year</button>
+    <button onclick="showCategory('nightout-category')">Nightout</button>
+
     <script>
-        function togglePhotos(categoryId) {
-            var photos = document.getElementById(categoryId);
-            photos.style.display = photos.style.display === 'none' ? 'flex' : 'none';
+        function showCategory(categoryId) {
+            // Hide all categories
+            var categories = document.querySelectorAll('.category');
+            categories.forEach(function (category) {
+                category.style.display = 'none';
+            });
+
+            // Show the selected category
+            var selectedCategory = document.getElementById(categoryId);
+            selectedCategory.style.display = 'block';
         }
     </script>
-
 </body>
 
 </html>
