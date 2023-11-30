@@ -21,10 +21,11 @@
         .category h2 {
             border-bottom: 2px solid white;
             padding-bottom: 5px;
+            cursor: pointer;
         }
 
         .photo-container {
-            display: flex;
+            display: none;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -47,29 +48,38 @@
     <h1>Download Photos</h1>
 
     <!-- Christmas category -->
-    <div class="category">
+    <div class="category" onclick="togglePhotos('christmas-photos')">
         <h2>Christmas</h2>
-        <div class="photo-container">
+        <div class="photo-container" id="christmas-photos">
             <!-- Display photos along with download links for Christmas category -->
             <div class="photo-item">
-                <img src="Christmass_Photos/Dinner.jpg" alt="Dinner" width="200">
-                <a href="Christmass_Photos/Dinner.jpg" class="photo-link" download>Dinner</a>
+                <img src="Christmas/Dinner.jpg" alt="Dinner" width="200">
+                <a href="Christmas/Dinner.jpg" class="photo-link" download>Dinner</a>
             </div>
 
             <div class="photo-item">
-                <img src="Christmass_Photos/Lunch.jpg" alt="Lunch" width="200">
-                <a href="Christmass_Photos/Lunch.jpg" class="photo-link" download>Lunch</a>
+                <img src="Christmas/Lunch.jpg" alt="Lunch" width="200">
+                <a href="Christmas/Lunch.jpg" class="photo-link" download>Lunch</a>
             </div>
 
             <div class="photo-item">
-                <img src="Christmass_Photos/nightout.jpg" alt="nightout" width="200">
-                <a href="Christmass_Photos/nightout.jpg" class="photo-link" download>nightout</a>
+                <img src="Christmas/nightout.jpg" alt="nightout" width="200">
+                <a href="Christmas/nightout.jpg" class="photo-link" download>nightout</a>
             </div>
             <!-- Add more photo items for each photo in the Christmas category -->
         </div>
     </div>
 
+    <!-- New Category -->
     <!-- Add more categories as needed -->
+
+    <script>
+        function togglePhotos(categoryId) {
+            var photos = document.getElementById(categoryId);
+            photos.style.display = photos.style.display === 'none' ? 'flex' : 'none';
+        }
+    </script>
+
 </body>
 
 </html>
