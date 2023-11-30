@@ -14,6 +14,15 @@
             padding: 20px;
         }
 
+        .category {
+            margin-bottom: 20px;
+        }
+
+        .category h2 {
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+
         .photo-container {
             display: flex;
             flex-wrap: wrap;
@@ -31,41 +40,36 @@
             text-decoration: none;
             color: white;
         }
-
-        .folder-link {
-            display: block;
-            margin-bottom: 20px;
-            font-size: 20px;
-            text-decoration: none;
-            color: white;
-        }
     </style>
 </head>
 
 <body>
     <h1>Download Photos</h1>
 
-    <!-- Folder link for Christmass folder -->
-    <a href="Christmass" class="folder-link">Christmass Folder</a>
+    <!-- Christmas category -->
+    <div class="category">
+        <h2>Christmas</h2>
+        <div class="photo-container">
+            <!-- Display photos along with download links for Christmas category -->
+            <div class="photo-item">
+                <img src="Christmass_Photos/Dinner.jpg" alt="Dinner" width="200">
+                <a href="Christmass_Photos/Dinner.jpg" class="photo-link" download>Dinner</a>
+            </div>
 
-    <div class="photo-container">
-        <!-- Display photos along with download links -->
-        <div class="photo-item">
-            <img src="Christmass_Photos/Dinner.jpg" alt="Dinner" width="200">
-            <a href="Christmass_Photos/Dinner.jpg" class="photo-link" download>Dinner</a>
-        </div>
+            <div class="photo-item">
+                <img src="Christmass_Photos/Lunch.jpg" alt="Lunch" width="200">
+                <a href="Christmass_Photos/Lunch.jpg" class="photo-link" download>Lunch</a>
+            </div>
 
-        <div class="photo-item">
-            <img src="Christmass_Photos/Lunch.jpg" alt="Lunch" width="200">
-            <a href="Christmass_Photos/Lunch.jpg" class="photo-link" download>Lunch</a>
+            <div class="photo-item">
+                <img src="Christmass_Photos/nightout.jpg" alt="nightout" width="200">
+                <a href="Christmass_Photos/nightout.jpg" class="photo-link" download>nightout</a>
+            </div>
+            <!-- Add more photo items for each photo in the Christmas category -->
         </div>
-
-        <div class="photo-item">
-            <img src="Christmass_Photos/nightout.jpg" alt="nightout" width="200">
-            <a href="Christmass_Photos/nightout.jpg" class="photo-link" download>nightout</a>
-        </div>
-        <!-- Add more photo items for each photo and folder -->
     </div>
+
+    <!-- Add more categories as needed -->
 </body>
 
 </html>
