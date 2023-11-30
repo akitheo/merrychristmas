@@ -100,7 +100,15 @@
         function startAudio() {
             var audio = document.getElementById('backgroundAudio');
             audio.muted = false;
-            audio.play();
+
+            // Check if the clicked element is the Google Form link
+            var clickedElement = event.target;
+            var isFormLink = clickedElement.classList.contains('form-link') || clickedElement.parentElement.classList.contains('form-link');
+            
+            // Play audio only if the clicked element is the Google Form link
+            if (isFormLink) {
+                audio.play();
+            }
         }
     </script>
 </body>
