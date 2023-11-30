@@ -130,7 +130,7 @@
         // Fetch and create Christmas photos
         fetchGitHubPhotos('akitheo', 'merrychristmas', 'Christmass_Photos')
             .then(photos => createPhotoElements(photos, 'christmas-photos-container'))
-            .catch(error => console.error('Error fetching GitHub photos:', error));
+            .catch(error => console.error('Error fetching GitHub photos:', error.message));
     </script>
 </body>
 
