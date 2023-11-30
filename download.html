@@ -50,83 +50,82 @@
     <!-- Christmas category -->
     <div class="category" id="christmas-category">
         <h2>Christmas</h2>
-        <div class="photo-container">
-            <!-- Display photos along with download links for Christmas category -->
-            <div class="photo-item">
-                <img src="Christmass_Photos/Dinner.jpg" alt="Dinner" width="200">
-                <a href="Christmass_Photos/Dinner.jpg" class="photo-link" download>Dinner</a>
-            </div>
-
-            <div class="photo-item">
-                <img src="Christmass_Photos/Lunch.jpg" alt="Lunch" width="200">
-                <a href="Christmass_Photos/Lunch.jpg" class="photo-link" download>Lunch</a>
-            </div>
-
-            <div class="photo-item">
-                <img src="Christmass_Photos/nightout.jpg" alt="nightout" width="200">
-                <a href="Christmass_Photos/nightout.jpg" class="photo-link" download>nightout</a>
-            </div>
-            <!-- Add more photo items for each photo in the Christmas category -->
+        <div class="photo-container" id="christmas-photos-container">
+            <!-- Dynamically generated photos will be added here -->
         </div>
     </div>
 
     <!-- New Year category -->
     <div class="category" id="new-year-category">
         <h2>New Year</h2>
-        <div class="photo-container">
-            <!-- Display photos along with download links for New Year category -->
-            <div class="photo-item">
-                <img src="New_Year_Photos/Fireworks.jpg" alt="Fireworks" width="200">
-                <a href="New_Year_Photos/Fireworks.jpg" class="photo-link" download>Fireworks</a>
-            </div>
-
-            <div class="photo-item">
-                <img src="New_Year_Photos/Party.jpg" alt="Party" width="200">
-                <a href="New_Year_Photos/Party.jpg" class="photo-link" download>Party</a>
-            </div>
-
-            <!-- Add more photo items for each photo in the New Year category -->
+        <div class="photo-container" id="new-year-photos-container">
+            <!-- Dynamically generated photos will be added here -->
         </div>
     </div>
 
     <!-- Nightout category -->
     <div class="category" id="nightout-category">
         <h2>Nightout</h2>
-        <div class="photo-container">
-            <!-- Display photos along with download links for Nightout category -->
-            <div class="photo-item">
-                <img src="Nightout_Photos/Bar.jpg" alt="Bar" width="200">
-                <a href="Nightout_Photos/Bar.jpg" class="photo-link" download>Bar</a>
-            </div>
-
-            <div class="photo-item">
-                <img src="Nightout_Photos/Concert.jpg" alt="Concert" width="200">
-                <a href="Nightout_Photos/Concert.jpg" class="photo-link" download>Concert</a>
-            </div>
-
-            <!-- Add more photo items for each photo in the Nightout category -->
+        <div class="photo-container" id="nightout-photos-container">
+            <!-- Dynamically generated photos will be added here -->
         </div>
     </div>
 
-    <!-- Add more categories as needed -->
-
-    <!-- Buttons to switch between categories -->
-    <button onclick="showCategory('christmas-category')">Christmas</button>
-    <button onclick="showCategory('new-year-category')">New Year</button>
-    <button onclick="showCategory('nightout-category')">Nightout</button>
-
+    <!-- Load photos from GitHub and create photo elements -->
     <script>
-        function showCategory(categoryId) {
-            // Hide all categories
-            var categories = document.querySelectorAll('.category');
-            categories.forEach(function (category) {
-                category.style.display = 'none';
+        // Function to fetch photos from a GitHub repository
+        async function fetchGitHubPhotos(username, repository, path) {
+            const response = await fetch(`https://api.github.com/repos/${username}/${repository}/contents/${path}`);
+            const data = await response.json();
+
+            return data.map(item => ({
+                name: item.name,
+                path: item.download_url
+            }));
+        }
+
+        // Function to create photo elements
+        function createPhotoElements(photos, containerId) {
+            const container = document.getElementById(containerId);
+
+            photos.forEach(photo => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+
+                const img = document.createElement('img');
+                img.src = photo.path;
+                img.alt = photo.name;
+                img.width = 200;
+
+                const link = document.createElement('a');
+                link.href = photo.path;
+                link.className = 'photo-link';
+                link.download = photo.name;
+                link.textContent = photo.name;
+
+                photoItem.appendChild(img);
+                photoItem.appendChild(link);
+                container.appendChild(photoItem);
             });
 
-            // Show the selected category
-            var selectedCategory = document.getElementById(categoryId);
-            selectedCategory.style.display = 'block';
+            // Show the category after loading photos
+            document.getElementById(containerId.replace('-photos-container', '')).style.display = 'block';
         }
+
+        // Fetch and create Christmas photos
+        fetchGitHubPhotos('your-username', 'your-repository', 'Christmass_Photos')
+            .then(photos => createPhotoElements(photos, 'christmas-photos-container'))
+            .catch(error => console.error('Error fetching GitHub photos:', error));
+
+        // Fetch and create New Year photos
+        fetchGitHubPhotos('your-username', 'your-repository', 'New_Year_Photos')
+            .then(photos => createPhotoElements(photos, 'new-year-photos-container'))
+            .catch(error => console.error('Error fetching GitHub photos:', error));
+
+        // Fetch and create Nightout photos
+        fetchGitHubPhotos('your-username', 'your-repository', 'Nightout_Photos')
+            .then(photos => createPhotoElements(photos, 'nightout-photos-container'))
+            .catch(error => console.error('Error fetching GitHub photos:', error));
     </script>
 </body>
 
