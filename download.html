@@ -12,11 +12,31 @@
             font-family: 'Times New Roman', serif;
             text-align: center;
             padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .category-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .category-button {
+            background-color: Pink;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
         }
 
         .category {
             margin-bottom: 20px;
             display: none; /* Hide all categories by default */
+            flex-grow: 1;
+            margin-left: 20px;
         }
 
         .category h2 {
@@ -41,25 +61,18 @@
             text-decoration: none;
             color: white;
         }
-
-        .category-button {
-            background-color: Pink;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin: 5px;
-            cursor: pointer;
-        }
     </style>
 </head>
 
 <body>
     <h1>Download Photos</h1>
 
-    <!-- Category buttons -->
-    <button class="category-button" onclick="showCategory('christmas-category')">Christmas</button>
-    <button class="category-button" onclick="showCategory('new-year-category')">New Year</button>
-    <button class="category-button" onclick="showCategory('nightout-category')">Nightout</button>
+    <!-- Category buttons on the left -->
+    <div class="category-buttons">
+        <button class="category-button" onclick="showCategory('christmas-category')">Christmas</button>
+        <button class="category-button" onclick="showCategory('new-year-category')">New Year</button>
+        <button class="category-button" onclick="showCategory('nightout-category')">Nightout</button>
+    </div>
 
     <!-- Christmas category -->
     <div class="category" id="christmas-category">
@@ -106,6 +119,9 @@
                 console.error('Container not found:', containerId);
                 return;
             }
+
+            // Clear previous photos
+            container.innerHTML = '';
 
             photos.forEach(photo => {
                 const photoItem = document.createElement('div');
