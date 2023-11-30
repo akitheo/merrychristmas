@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Your Lovely Photos</title>
+    <title>Download Photos</title>
     <style>
         body {
             background-color: Pink;
@@ -17,25 +17,30 @@
             align-items: center;
         }
 
+        .category-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .category-button {
+            background-color: Pink;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
         .category {
-            margin-bottom: 20px;
+            margin-top: 20px;
             display: none; /* Hide all categories by default */
+            width: 100%;
         }
 
         .category h2 {
             border-bottom: 2px solid white;
             padding-bottom: 5px;
-        }
-
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-
-        button {
-            margin-bottom: 10px;
         }
 
         .photo-container {
@@ -61,12 +66,11 @@
 <body>
     <h1>Download Photos</h1>
 
-    <!-- Buttons container on the left -->
-    <div class="buttons-container">
-        <!-- Buttons to switch between categories -->
-        <button onclick="showCategory('christmas-category')">Christmas</button>
-        <button onclick="showCategory('new-year-category')">New Year</button>
-        <button onclick="showCategory('nightout-category')">Nightout</button>
+    <!-- Category buttons on the left -->
+    <div class="category-buttons">
+        <button class="category-button" onclick="showCategory('christmas-category')">Christmas</button>
+        <button class="category-button" onclick="showCategory('new-year-category')">New Year</button>
+        <button class="category-button" onclick="showCategory('nightout-category')">Nightout</button>
     </div>
 
     <!-- Christmas category -->
@@ -115,6 +119,9 @@
                 return;
             }
 
+            // Clear previous photos
+            container.innerHTML = '';
+
             photos.forEach(photo => {
                 const photoItem = document.createElement('div');
                 photoItem.className = 'photo-item';
@@ -139,32 +146,40 @@
             container.parentElement.style.display = 'block';
         }
 
-        // Fetch and create Christmas photos
-        fetchGitHubPhotos('akitheo', 'merrychristmas', 'Christmass_Photos')
-            .then(photos => createPhotoElements(photos, 'christmas-photos-container'))
-            .catch(error => console.error('Error fetching GitHub photos:', error));
-
-        // Fetch and create New Year photos
-        //fetchGitHubPhotos('akitheo', 'merrychristmas', 'New_Year_Photos')
-            //.then(photos => createPhotoElements(photos, 'new-year-photos-container'))
-            //.catch(error => console.error('Error fetching GitHub photos:', error));
-
-        // Fetch and create Nightout photos
-        //fetchGitHubPhotos('akitheo', 'merrychristmas', 'Nightout_Photos')
-            //.then(photos => createPhotoElements(photos, 'nightout-photos-container'))
-            //.catch(error => console.error('Error fetching GitHub photos:', error));
-
-        // Function to show a specific category and hide others
+        // Function to show a specific category
         function showCategory(categoryId) {
             // Hide all categories
-            var categories = document.querySelectorAll('.category');
-            categories.forEach(function (category) {
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(category => {
                 category.style.display = 'none';
             });
 
             // Show the selected category
-            var selectedCategory = document.getElementById(categoryId);
+            const selectedCategory = document.getElementById(categoryId);
             selectedCategory.style.display = 'block';
+
+            // Fetch and create photos for the selected category
+            switch (categoryId) {
+                case 'christmas-category':
+                    fetchGitHubPhotos('akitheo', 'merrychristmas', 'Christmass_Photos')
+                        .then(photos => createPhotoElements(photos, 'christmas-photos-container'))
+                        .catch(error => console.error('Error fetching GitHub photos:', error));
+                    break;
+                case 'new-year-category':
+                    // Fetch and create photos for the New Year category
+                    // fetchGitHubPhotos('akitheo', 'merrychristmas', 'New_Year_Photos')
+                    //     .then(photos => createPhotoElements(photos, 'new-year-photos-container'))
+                    //     .catch(error => console.error('Error fetching GitHub photos:', error));
+                    break;
+                case 'nightout-category':
+                    // Fetch and create photos for the Nightout category
+                    // fetchGitHubPhotos('akitheo', 'merrychristmas', 'Nightout_Photos')
+                    //     .then(photos => createPhotoElements(photos, 'nightout-photos-container'))
+                    //     .catch(error => console.error('Error fetching GitHub photos:', error));
+                    break;
+                default:
+                    console.error('Invalid category:', categoryId);
+            }
         }
     </script>
 </body>
