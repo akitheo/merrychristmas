@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Photos</title>
+    <title>Download Your Lovely Photos</title>
     <style>
         body {
             background-color: Pink;
@@ -17,33 +17,31 @@
             align-items: center;
         }
 
-        h1 {
+        .category {
             margin-bottom: 20px;
+            display: none; /* Hide all categories by default */
         }
 
-        .button-container {
+        .category h2 {
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+
+        .buttons-container {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             margin-bottom: 20px;
         }
 
-        .category-button {
-            background-color: Red;
-            color: Green;
-            border: none;
-            padding: 10px;
-            margin: 5px;
-            cursor: pointer;
-            text-align: left;
-            width: 100%;
+        button {
+            margin-bottom: 10px;
         }
 
         .photo-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            width: 100%; /* Make sure photos take full width */
         }
 
         .photo-item {
@@ -63,26 +61,36 @@
 <body>
     <h1>Download Photos</h1>
 
-    <!-- Category buttons on the left -->
-    <div class="button-container">
-        <button class="category-button" onclick="showCategory('christmas-category')">Christmas</button>
-        <button class="category-button" onclick="showCategory('new-year-category')">New Year</button>
-        <button class="category-button" onclick="showCategory('nightout-category')">Nightout</button>
+    <!-- Buttons container on the left -->
+    <div class="buttons-container">
+        <!-- Buttons to switch between categories -->
+        <button onclick="showCategory('christmas-category')">Christmas</button>
+        <button onclick="showCategory('new-year-category')">New Year</button>
+        <button onclick="showCategory('nightout-category')">Nightout</button>
     </div>
 
     <!-- Christmas category -->
-    <div class="photo-container category" id="christmas-category">
-        <!-- Dynamically generated photos will be added here -->
+    <div class="category" id="christmas-category">
+        <h2>Christmas</h2>
+        <div class="photo-container" id="christmas-photos-container">
+            <!-- Dynamically generated photos will be added here -->
+        </div>
     </div>
 
     <!-- New Year category -->
-    <div class="photo-container category" id="new-year-category">
-        <!-- Dynamically generated photos will be added here -->
+    <div class="category" id="new-year-category">
+        <h2>New Year</h2>
+        <div class="photo-container" id="new-year-photos-container">
+            <!-- Dynamically generated photos will be added here -->
+        </div>
     </div>
 
     <!-- Nightout category -->
-    <div class="photo-container category" id="nightout-category">
-        <!-- Dynamically generated photos will be added here -->
+    <div class="category" id="nightout-category">
+        <h2>Nightout</h2>
+        <div class="photo-container" id="nightout-photos-container">
+            <!-- Dynamically generated photos will be added here -->
+        </div>
     </div>
 
     <!-- Load photos from GitHub and create photo elements -->
@@ -107,9 +115,6 @@
                 return;
             }
 
-            // Clear previous photos
-            container.innerHTML = '';
-
             photos.forEach(photo => {
                 const photoItem = document.createElement('div');
                 photoItem.className = 'photo-item';
@@ -131,43 +136,35 @@
             });
 
             // Show the category after loading photos
-            container.style.display = 'flex';
+            container.parentElement.style.display = 'block';
         }
 
-        // Function to show a specific category
+        // Fetch and create Christmas photos
+        fetchGitHubPhotos('akitheo', 'merrychristmas', 'Christmass_Photos')
+            .then(photos => createPhotoElements(photos, 'christmas-photos-container'))
+            .catch(error => console.error('Error fetching GitHub photos:', error));
+
+        // Fetch and create New Year photos
+        //fetchGitHubPhotos('akitheo', 'merrychristmas', 'New_Year_Photos')
+            //.then(photos => createPhotoElements(photos, 'new-year-photos-container'))
+            //.catch(error => console.error('Error fetching GitHub photos:', error));
+
+        // Fetch and create Nightout photos
+        //fetchGitHubPhotos('akitheo', 'merrychristmas', 'Nightout_Photos')
+            //.then(photos => createPhotoElements(photos, 'nightout-photos-container'))
+            //.catch(error => console.error('Error fetching GitHub photos:', error));
+
+        // Function to show a specific category and hide others
         function showCategory(categoryId) {
             // Hide all categories
-            const categories = document.querySelectorAll('.category');
-            categories.forEach(category => {
+            var categories = document.querySelectorAll('.category');
+            categories.forEach(function (category) {
                 category.style.display = 'none';
             });
 
             // Show the selected category
-            const selectedCategory = document.getElementById(categoryId);
-            selectedCategory.style.display = 'flex';
-
-            // Fetch and create photos for the selected category
-            switch (categoryId) {
-                case 'christmas-category':
-                    fetchGitHubPhotos('akitheo', 'merrychristmas', 'Christmass_Photos')
-                        .then(photos => createPhotoElements(photos, 'christmas-category'))
-                        .catch(error => console.error('Error fetching GitHub photos:', error));
-                    break;
-                case 'new-year-category':
-                    // Fetch and create photos for the New Year category
-                    // fetchGitHubPhotos('akitheo', 'merrychristmas', 'New_Year_Photos')
-                    //     .then(photos => createPhotoElements(photos, 'new-year-category'))
-                    //     .catch(error => console.error('Error fetching GitHub photos:', error));
-                    break;
-                case 'nightout-category':
-                    // Fetch and create photos for the Nightout category
-                    // fetchGitHubPhotos('akitheo', 'merrychristmas', 'Nightout_Photos')
-                    //     .then(photos => createPhotoElements(photos, 'nightout-category'))
-                    //     .catch(error => console.error('Error fetching GitHub photos:', error));
-                    break;
-                default:
-                    console.error('Invalid category:', categoryId);
-            }
+            var selectedCategory = document.getElementById(categoryId);
+            selectedCategory.style.display = 'block';
         }
     </script>
 </body>
