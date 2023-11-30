@@ -12,6 +12,13 @@
             font-family: 'Times New Roman', serif;
             text-align: center;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .categories-column {
+            margin-right: 20px;
         }
 
         .category {
@@ -46,6 +53,14 @@
 
 <body>
     <h1>Download Photos</h1>
+
+    <!-- Categories column -->
+    <div class="categories-column">
+        <button onclick="showCategory('christmas-category')">Christmas</button>
+        <button onclick="showCategory('new-year-category')">New Year</button>
+        <button onclick="showCategory('nightout-category')">Nightout</button>
+        <!-- Add more buttons as needed -->
+    </div>
 
     <!-- Christmas category -->
     <div class="category" id="christmas-category">
