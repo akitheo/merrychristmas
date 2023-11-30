@@ -39,20 +39,11 @@
             width: 100%;
         }
 
-        .category {
-            display: none; /* Hide all categories by default */
-            width: 100%;
-        }
-
-        .category h2 {
-            border-bottom: 2px solid white;
-            padding-bottom: 5px;
-        }
-
         .photo-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%; /* Make sure photos take full width */
         }
 
         .photo-item {
@@ -80,27 +71,18 @@
     </div>
 
     <!-- Christmas category -->
-    <div class="category" id="christmas-category">
-        <h2>Christmas</h2>
-        <div class="photo-container" id="christmas-photos-container">
-            <!-- Dynamically generated photos will be added here -->
-        </div>
+    <div class="photo-container category" id="christmas-category">
+        <!-- Dynamically generated photos will be added here -->
     </div>
 
     <!-- New Year category -->
-    <div class="category" id="new-year-category">
-        <h2>New Year</h2>
-        <div class="photo-container" id="new-year-photos-container">
-            <!-- Dynamically generated photos will be added here -->
-        </div>
+    <div class="photo-container category" id="new-year-category">
+        <!-- Dynamically generated photos will be added here -->
     </div>
 
     <!-- Nightout category -->
-    <div class="category" id="nightout-category">
-        <h2>Nightout</h2>
-        <div class="photo-container" id="nightout-photos-container">
-            <!-- Dynamically generated photos will be added here -->
-        </div>
+    <div class="photo-container category" id="nightout-category">
+        <!-- Dynamically generated photos will be added here -->
     </div>
 
     <!-- Load photos from GitHub and create photo elements -->
@@ -149,7 +131,7 @@
             });
 
             // Show the category after loading photos
-            container.parentElement.style.display = 'block';
+            container.style.display = 'flex';
         }
 
         // Function to show a specific category
@@ -162,25 +144,25 @@
 
             // Show the selected category
             const selectedCategory = document.getElementById(categoryId);
-            selectedCategory.style.display = 'block';
+            selectedCategory.style.display = 'flex';
 
             // Fetch and create photos for the selected category
             switch (categoryId) {
                 case 'christmas-category':
                     fetchGitHubPhotos('akitheo', 'merrychristmas', 'Christmass_Photos')
-                        .then(photos => createPhotoElements(photos, 'christmas-photos-container'))
+                        .then(photos => createPhotoElements(photos, 'christmas-category'))
                         .catch(error => console.error('Error fetching GitHub photos:', error));
                     break;
                 case 'new-year-category':
                     // Fetch and create photos for the New Year category
                     // fetchGitHubPhotos('akitheo', 'merrychristmas', 'New_Year_Photos')
-                    //     .then(photos => createPhotoElements(photos, 'new-year-photos-container'))
+                    //     .then(photos => createPhotoElements(photos, 'new-year-category'))
                     //     .catch(error => console.error('Error fetching GitHub photos:', error));
                     break;
                 case 'nightout-category':
                     // Fetch and create photos for the Nightout category
                     // fetchGitHubPhotos('akitheo', 'merrychristmas', 'Nightout_Photos')
-                    //     .then(photos => createPhotoElements(photos, 'nightout-photos-container'))
+                    //     .then(photos => createPhotoElements(photos, 'nightout-category'))
                     //     .catch(error => console.error('Error fetching GitHub photos:', error));
                     break;
                 default:
