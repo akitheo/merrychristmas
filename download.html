@@ -1,1 +1,62 @@
+<!-- download-photos.html -->
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Photos</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .photo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .photo-item {
+            margin: 10px;
+            text-align: center;
+        }
+
+        .photo-link {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Download Photos</h1>
+
+    <div class="photo-container">
+        <!-- Display photos along with download links -->
+        <div class="photo-item">
+            <img src="Christmass_Photos/Dinner.jpg" alt="Dinner" width="200">
+            <a href="Christmass_Photos/Dinner.jpg" class="photo-link" download>Download Photo 1</a>
+        </div>
+
+        <div class="photo-item">
+            <img src="Christmass_Photos/Lunch.jpg" alt="Lunch" width="200">
+            <a href="Christmass_Photos/Lunch.jpg" class="photo-link" download>Download Photo 2</a>
+        </div>
+
+        <div class="photo-item">
+            <img src="Christmass_Photos/nightout.jpg" alt="nightout" width="200">
+            <a href="Christmass_Photos/nightout.jpg" class="photo-link" download>Download Photo 3</a>
+        </div>
+        <!-- Add more photo items for each photo and folder -->
+    </div>
+</body>
+
+</html>
