@@ -114,12 +114,7 @@
             });
 
             // Show the category after loading photos
-            const categoryElement = document.getElementById(containerId.replace('-photos-container', ''));
-            if (categoryElement) {
-                categoryElement.style.display = 'block';
-            } else {
-                console.error('Category element not found:', containerId.replace('-photos-container', ''));
-            }
+            container.parentElement.style.display = 'block';
         }
 
         // Fetch and create Christmas photos
