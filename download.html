@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Photos</title>
+    <title>Download Your lovely Photos </title>
     <style>
         body {
             background-color: Pink;
@@ -113,17 +113,17 @@
         }
 
         // Fetch and create Christmas photos
-        fetchGitHubPhotos('your-username', 'your-repository', 'Christmass_Photos')
+        fetchGitHubPhotos('akitheo', 'merrychristmas', 'Christmass_Photos')
             .then(photos => createPhotoElements(photos, 'christmas-photos-container'))
             .catch(error => console.error('Error fetching GitHub photos:', error));
 
         // Fetch and create New Year photos
-        fetchGitHubPhotos('your-username', 'your-repository', 'New_Year_Photos')
+        fetchGitHubPhotos('akitheo', 'merrychristmas', 'New_Year_Photos')
             .then(photos => createPhotoElements(photos, 'new-year-photos-container'))
             .catch(error => console.error('Error fetching GitHub photos:', error));
 
         // Fetch and create Nightout photos
-        fetchGitHubPhotos('your-username', 'your-repository', 'Nightout_Photos')
+        fetchGitHubPhotos('akitheo', 'merrychristmas', 'Nightout_Photos')
             .then(photos => createPhotoElements(photos, 'nightout-photos-container'))
             .catch(error => console.error('Error fetching GitHub photos:', error));
     </script>
