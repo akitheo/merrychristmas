@@ -64,19 +64,19 @@
 </head>
 
 <body>
-    <h1>Download Photos</h1>
+    <h1>Download Your Lovely Photos</h1>
 
     <!-- Category buttons on the left -->
     <div class="category-buttons">
-        <button class="category-button" onclick="showCategory('christmas-category')">Christmas</button>
+        <button class="category-button" onclick="showCategory('Dinner-category')">Dinner Time</button>
         <button class="category-button" onclick="showCategory('new-year-category')">New Year</button>
         <button class="category-button" onclick="showCategory('nightout-category')">Nightout</button>
     </div>
 
     <!-- Christmas category -->
-    <div class="category" id="christmas-category">
-        <h2>Christmas</h2>
-        <div class="photo-container" id="christmas-photos-container">
+    <div class="category" id="Dinner-category">
+        <h2>Dinner</h2>
+        <div class="photo-container" id="Dinner-photos-container">
             <!-- Dynamically generated photos will be added here -->
         </div>
     </div>
@@ -160,9 +160,9 @@
 
             // Fetch and create photos for the selected category
             switch (categoryId) {
-                case 'christmas-category':
+                case 'Dinner-category':
                     fetchGitHubPhotos('akitheo', 'merrychristmas', 'Christmass_Photos')
-                        .then(photos => createPhotoElements(photos, 'christmas-photos-container'))
+                        .then(photos => createPhotoElements(photos, 'Dinner-photos-container'))
                         .catch(error => console.error('Error fetching GitHub photos:', error));
                     break;
                 case 'new-year-category':
